@@ -690,7 +690,7 @@
 
             // Load image
             const imgContainer = document.getElementById('image-container');
-            imgContainer.innerHTML = `<img src="/image/${sequence.image}" alt="Sequence ${sequence.id}">`;
+            imgContainer.innerHTML = `<img src="images/${sequence.image}" alt="Sequence ${sequence.id}">`;
 
             // Show audio controls
             document.getElementById('audio-controls').style.display = 'block';
@@ -746,7 +746,7 @@
                 playNext();
             });
 
-            fetch(`/midi/${midiFile}`)
+            fetch(`midi/${midiFile}`)
                 .then(response => response.arrayBuffer())
                 .then(arrayBuffer => {
                     midiPlayer.loadArrayBuffer(arrayBuffer);
@@ -792,10 +792,10 @@
                     y: [selectedSequence.pc2],
                     z: [zCoord],
                     marker: {
-                        size: 14,
+                        size: 25,
                         color: '#ff0066',
                         symbol: 'diamond',
-                        opacity: 0.3,
+                        opacity: 0.4,
                         line: { color: '#ff0066', width: 0 }
                     },
                     name: '🎵glow',
@@ -807,10 +807,10 @@
                     x: [selectedSequence.pc1],
                     y: [selectedSequence.pc2],
                     marker: {
-                        size: 20,
+                        size: 35,
                         color: '#ff0066',
                         symbol: 'diamond',
-                        opacity: 0.3,
+                        opacity: 0.4,
                         line: { color: '#ff0066', width: 0 }
                     },
                     name: '🎵glow',
@@ -825,11 +825,11 @@
                     y: [selectedSequence.pc2],
                     z: [zCoord],
                     marker: {
-                        size: 7,
+                        size: 15,
                         color: '#ff0066',
                         symbol: 'diamond',
                         opacity: 1,
-                        line: { color: '#ffffff', width: 1 }
+                        line: { color: '#ffffff', width: 3 }
                     },
                     name: '🎵',
                     showlegend: false,
@@ -840,11 +840,11 @@
                     x: [selectedSequence.pc1],
                     y: [selectedSequence.pc2],
                     marker: {
-                        size: 10,
+                        size: 20,
                         color: '#ff0066',
                         symbol: 'diamond',
                         opacity: 1,
-                        line: { color: '#ffffff', width: 1 }
+                        line: { color: '#ffffff', width: 3 }
                     },
                     name: '🎵',
                     showlegend: false,
