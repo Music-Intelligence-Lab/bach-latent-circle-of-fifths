@@ -690,7 +690,7 @@
 
             // Load image
             const imgContainer = document.getElementById('image-container');
-            imgContainer.innerHTML = `<img src="images/${sequence.image}" alt="Sequence ${sequence.id}">`;
+            imgContainer.innerHTML = `<img src="/image/${sequence.image}" alt="Sequence ${sequence.id}">`;
 
             // Show audio controls
             document.getElementById('audio-controls').style.display = 'block';
@@ -792,7 +792,7 @@
                     y: [selectedSequence.pc2],
                     z: [zCoord],
                     marker: {
-                        size: 16,
+                        size: 14,
                         color: '#ff0066',
                         symbol: 'diamond',
                         opacity: 0.3,
@@ -807,7 +807,7 @@
                     x: [selectedSequence.pc1],
                     y: [selectedSequence.pc2],
                     marker: {
-                        size: 22,
+                        size: 20,
                         color: '#ff0066',
                         symbol: 'diamond',
                         opacity: 0.3,
@@ -825,11 +825,11 @@
                     y: [selectedSequence.pc2],
                     z: [zCoord],
                     marker: {
-                        size: 10,
+                        size: 8,
                         color: '#ff0066',
                         symbol: 'diamond',
                         opacity: 1,
-                        line: { color: '#ffffff', width: 2 }
+                        line: { color: '#ff99bb', width: 1 }
                     },
                     name: '🎵',
                     showlegend: false,
@@ -840,11 +840,11 @@
                     x: [selectedSequence.pc1],
                     y: [selectedSequence.pc2],
                     marker: {
-                        size: 14,
+                        size: 12,
                         color: '#ff0066',
                         symbol: 'diamond',
                         opacity: 1,
-                        line: { color: '#ffffff', width: 2 }
+                        line: { color: '#ff99bb', width: 1 }
                     },
                     name: '🎵',
                     showlegend: false,
