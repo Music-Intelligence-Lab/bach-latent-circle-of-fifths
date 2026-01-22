@@ -10,6 +10,8 @@ This project demonstrates that unsupervised deep learning can spontaneously reco
 
 **Explore the latent space interactively with MIDI playback!**
 
+![Bach Latent Space Explorer](image.png)
+
 ---
 
 ## Key Findings
