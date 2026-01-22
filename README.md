@@ -1,5 +1,9 @@
 # Circle of Fifths as Latent Geometry in Bach's Preludes and Fugues
 
+**Published at AAAI 2026, Singapore (PMLR)**
+
+📄 **[Paper on OpenReview](https://openreview.net/forum?id=HXm5wUgRib)**
+
 ## Overview
 
 This project demonstrates that unsupervised deep learning can spontaneously recover fundamental music-theoretic structure. We trained a simple feedforward autoencoder on J.S. Bach's *Well-Tempered Clavier*, Book I, and discovered that the learned latent space organizes pieces hierarchically into keys arranged in circle-of-fifths geometry.
