@@ -4,6 +4,12 @@
 
 This project demonstrates that unsupervised deep learning can spontaneously recover fundamental music-theoretic structure. We trained a simple feedforward autoencoder on J.S. Bach's *Well-Tempered Clavier*, Book I, and discovered that the learned latent space organizes pieces hierarchically into keys arranged in circle-of-fifths geometry.
 
+### Interactive Demo
+
+Explore the latent space interactively with MIDI playback:
+
+**[Bach Latent Space Explorer](https://music-intelligence-lab.github.io/bach-latent-circle-of-fifths/)**
+
 ### Key Findings
 
 - **Hierarchical Organization**: Sequences naturally cluster into pieces, which cluster into keys
@@ -17,8 +23,8 @@ This project demonstrates that unsupervised deep learning can spontaneously reco
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/bach-latent-space.git
-cd bach-latent-space
+git clone https://github.com/Music-Intelligence-Lab/bach-latent-circle-of-fifths.git
+cd bach-latent-circle-of-fifths
 
 # Create virtual environment (recommended)
 python -m venv venv
@@ -30,66 +36,48 @@ pip install -r requirements.txt
 
 Pre-trained weights can be found on huggingface: https://huggingface.co/josephbakarji/bach-circle-of-fifths
 
-### Generate Main Figure
+## Paper Plots
 
-To reproduce Figure 4 (hierarchical convergence):
+The `paper_plots/` folder contains scripts to reproduce key figures from the paper:
+
+### Hierarchical Clustering (Figure 2)
 
 ```bash
-python scripts/generate_figure4_convergence.py
+cd paper_plots
+python hierarchical_clustering_plot.py
 ```
 
-This will:
-1. Load pre-computed PCA coordinates from `data/2step_animation_data.json`
-2. Generate 3-panel figure showing:
-   - **Panel A**: Individual sequences (2,038 points) colored by key
-   - **Panel B**: Piece-level centroids with relative key and close-tonic connections
-   - **Panel C**: Key-level centroids with fitted circle overlay
-3. Save output to `figures/fig4_combined_convergence.{pdf,png}`
+Generates a 3-panel visualization showing:
+- **A. Individual Sequences**: 2,038 sequences colored by tonic
+- **B. Piece-Level Centroids**: 24 pieces with relative key (green) and Dorian (orange) connections
+- **C. Circle-of-Fifths Fit**: 12 key centroids with fitted circle
 
-Expected output statistics:
-- Relative key distance: 1.35 +/- 0.62 PC units
-- Close-tonic distance: 0.79 +/- 0.38 PC units
-- Circle radius: 2.59 PC units (CV = 8.5%)
+Output: `hierarchical_clustering_3steps.png/pdf`
 
-## Data Format
+![Hierarchical Clustering](paper_plots/hierarchical_clustering_3steps.png)
 
-### `2step_animation_data.json`
+### Classification of Unseen Pieces
 
-This file contains pre-computed PCA projections and hierarchical aggregations:
-
-```json
-{
-  "sequences": [
-    {
-      "piece": "0",
-      "pc1": 1.234,
-      "pc2": -0.567,
-      "index": 0
-    },
-    ...
-  ],
-  "piece_centroids": [
-    {
-      "piece_id": 0,
-      "key": "C",
-      "mode": "Major",
-      "avg_pc1": 1.697,
-      "avg_pc2": 3.645
-    },
-    ...
-  ],
-  "key_centroids_no_mode": [
-    {
-      "key": "C",
-      "avg_pc1": 0.741,
-      "avg_pc2": 3.222
-    },
-    ...
-  ]
-}
+```bash
+cd paper_plots
+python classified_pieces_plot.py
 ```
 
-### MIDI Files
+Visualizes 9 test pieces (red stars) with connections to their nearest training pieces, demonstrating the model's ability to classify unseen Bach compositions.
+
+Output: `classified_pieces_visualization.png/pdf`
+
+![Classification](paper_plots/classified_pieces_visualization.png)
+
+### Paper Plots Data Files
+
+The `paper_plots/` folder includes all necessary data:
+- `processed_data/` - Sequence data (`all_sequences.npy`, indices, labels)
+- `csv_data/centroids_pieces.csv` - 24 piece-level centroid coordinates
+- `code/epoch113_loss0.0291.weights.h5` - Trained model weights
+- `relative_key_distances.csv`, `wholetone_distances.csv` - Key relationship data
+
+## MIDI Files
 
 - **Original Data** (`original_data/`): 24 MIDI files from Bach's Well-Tempered Clavier, Book I
   - BWV 0846-0869 (Preludes and Fugues 1-24)
@@ -121,7 +109,7 @@ This converts MIDI files to binary piano roll representations:
 
 The provided weights (`epoch113_loss0.0291.weights.h5`) were trained for 113 epochs until convergence.
 
-### 3. Dimensionality Reduction (Two-Step PCA)
+### 2. Dimensionality Reduction (Two-Step PCA)
 
 The `two_step_pca_circle_analysis.py` script performs hierarchical PCA:
 
@@ -132,20 +120,6 @@ The `two_step_pca_circle_analysis.py` script performs hierarchical PCA:
 5. **Circle fitting**: Least-squares fit to key centroids
 
 This two-step aggregation reveals the hierarchical structure.
-
-## Reproducing Paper Results
-
-### Figure 4: Hierarchical Convergence
-
-```bash
-python scripts/generate_figure4_convergence.py
-```
-
-Expected output matches paper Figure 4:
-- Clear hierarchical clustering from sequences → pieces → keys
-- Close-tonic pairs (purple dashed) closer than relative pairs (gray solid)
-- Near-perfect circle of fifths (12 keys evenly spaced)
-These statistics are computed during figure generation and printed to console.
 
 ## Model Weights
 
@@ -174,4 +148,3 @@ This project is released under the MIT License. The MIDI files are from public d
 - **Najla Sadek**: nss32@mail.aub.edu
 - **Joseph Bakarji**: jb50@aub.edu.lb
 - **Institution**: American University of Beirut, Lebanon
-
