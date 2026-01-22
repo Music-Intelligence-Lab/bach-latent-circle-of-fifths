@@ -4,9 +4,11 @@
 
 📄 **[Paper on OpenReview](https://openreview.net/forum?id=HXm5wUgRib)**
 
-## Overview
+## Abstract
 
-This project demonstrates that unsupervised deep learning can spontaneously recover fundamental music-theoretic structure. We trained a simple feedforward autoencoder on J.S. Bach's *Well-Tempered Clavier*, Book I, and discovered that the learned latent space organizes pieces hierarchically into keys arranged in circle-of-fifths geometry.
+Can unsupervised deep learning methods encode fundamental music-theoretic features? We answer this question by training an autoencoder on J.S. Bach's Well-Tempered Clavier and analyzing its latent space via principal component analysis. Sequences in the first two principal components are clustered hierarchically into pieces and keys that spontaneously arrange in a circle-of-fifths geometry. Quantitatively, relative major-minor key pairs (sharing pitch collections) lie more than three times closer than non-relative pairs, and circle-of-fifths distance correlates strongly with learned distances. This structure emerges entirely from reconstruction loss, with no harmonic labels or supervision. Our results suggest that the circle of fifths is an intrinsic property of tonal relationships, demonstrating that unsupervised representation learning can recover harmonic principles that open the door for interpretable data-driven exploration of latent spaces across diverse musical traditions.
+
+**Keywords**: Deep Learning, Music Information Retrieval, Autoencoders, Latent Space Analysis, Circle of Fifths, Bach
 
 ---
 
@@ -97,6 +99,20 @@ from config import *
 
 encoder, decoder, autoencoder = build_autoencoder()
 autoencoder.load_weights('epoch113_loss0.0291.weights.h5')
+```
+
+## Citation
+
+If you use this code or data in your research, please cite:
+
+```bibtex
+@inproceedings{sadek2026circle,
+  title={Circle of Fifths as Latent Geometry in Bach's Well-Tempered Clavier},
+  author={Sadek, Najla and Bakarji, Joseph},
+  booktitle={EAAI @ AAAI 2026},
+  year={2026},
+  publisher={PMLR}
+}
 ```
 
 ## License
