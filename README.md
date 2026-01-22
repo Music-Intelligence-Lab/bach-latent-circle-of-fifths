@@ -1,4 +1,4 @@
-# Circle of Fifths as Latent Geometry in Bach's Preludes and Fugues
+# Circle of Fifths as Latent Geometry in Bach's Well-Tempered Clavier
 
 **Published at EAAI @ AAAI 2026, Singapore (PMLR)**
 
