@@ -1,6 +1,6 @@
 # Circle of Fifths as Latent Geometry in Bach's Preludes and Fugues
 
-**Published at AAAI 2026, Singapore (PMLR)**
+**Published at EAAI @ AAAI 2026, Singapore (PMLR)**
 
 📄 **[Paper on OpenReview](https://openreview.net/forum?id=HXm5wUgRib)**
 
